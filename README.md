@@ -33,6 +33,12 @@
 
 <img width="500" src="https://user-images.githubusercontent.com/87887586/207001767-015e3e6b-8fdb-4fb5-ae62-a69ca8b6bcbf.gif"/>
 
+
+- 댓글 삭제
+
+<img width="500" src="https://user-images.githubusercontent.com/87887586/207002355-b34a4a99-8aea-46cc-b139-d206a9cf490a.gif"/>
+
+
                       
                       
 
