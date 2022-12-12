@@ -10,6 +10,8 @@
   
 ### 3.실행결과
 
+-메인 게시판(셀렉트 박스(페이지)와 페이지네이션 구현)
+<img width="900px" height="600px" src="C:\Users\pinks\OneDrive\바탕 화면\Mainpagination.gif">
 
 
 
