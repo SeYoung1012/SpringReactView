@@ -10,16 +10,18 @@
   
 ### 3.실행결과
 
--메인 게시판(셀렉트 박스(페이지)와 페이지네이션 구현)
+- 메인 게시판(셀렉트 박스(페이지)와 페이지네이션 구현)
 
 <img width="500" src="https://user-images.githubusercontent.com/87887586/206994411-3667cf9a-51d4-449b-b283-93a9d275cf22.gif"/>
 
 
--게시글 작성 
+- 게시글 작성 
 
 <img width="500" src="https://user-images.githubusercontent.com/87887586/206997327-0e8b638a-a03e-45aa-bea9-f7e35805b069.gif"/>
 
+- 게시글 조회 및 수정
 
+ <img width="500" src="https://user-images.githubusercontent.com/87887586/206998732-ffc486a9-81e2-4b2b-a961-2b2f8a4738cf.gif"/>
 
 
 
