@@ -14,6 +14,7 @@
 
 <img width="500" src="https://user-images.githubusercontent.com/87887586/206994411-3667cf9a-51d4-449b-b283-93a9d275cf22.gif"/>
 
+
 -게시글 작성 
 
 <img width="500" src="https://user-images.githubusercontent.com/87887586/206997327-0e8b638a-a03e-45aa-bea9-f7e35805b069.gif"/>
