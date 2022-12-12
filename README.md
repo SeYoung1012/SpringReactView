@@ -11,6 +11,7 @@
 ### 3.실행결과
 
 -메인 게시판(셀렉트 박스(페이지)와 페이지네이션 구현)
+
 <img width="500" src="https://user-images.githubusercontent.com/87887586/206994411-3667cf9a-51d4-449b-b283-93a9d275cf22.gif"/>
 
 
