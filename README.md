@@ -24,5 +24,11 @@
  <img width="500" src="https://user-images.githubusercontent.com/87887586/206998732-ffc486a9-81e2-4b2b-a961-2b2f8a4738cf.gif"/>
 
 
+- 게시글 삭제
+
+<img width="500" src="https://user-images.githubusercontent.com/87887586/206999854-4dc107a7-ef1b-49d5-bd80-e367584bb36d.gif/>
+                      
+                      
+
 
 
