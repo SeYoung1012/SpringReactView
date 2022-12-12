@@ -6,7 +6,11 @@
 ### 2. 사용기술
   * (서버기술) : SpringBoot, Mybatis, Java , Maven
   * (화면기술) : React, axios, Mui ui
+  * (데이터 베이스) : postgresql
   
-  
+### 3.실행결과
+
+
+
 
 
