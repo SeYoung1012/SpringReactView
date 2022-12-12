@@ -160,6 +160,7 @@ function ContentForm() {
                    <Button onClick={() => {window.location.href ="/";}}>목록보기 </Button>
                     <Button onClick={() => {
                      axios.get("deleteAction?board_idx=" + `${board.board_idx}`)
+                     alert('게시글이 삭제되었습니다.')
                     window.location.href ="/";
                      }}>
                     삭제하기</Button>
