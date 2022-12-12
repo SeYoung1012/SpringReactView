@@ -27,6 +27,12 @@
 - 게시글 삭제
 
 <img width="500" src="https://user-images.githubusercontent.com/87887586/206999854-4dc107a7-ef1b-49d5-bd80-e367584bb36d.gif"/>
+
+
+- 댓글 조회 및 댓글 달기
+
+<img width="500" scr="https://user-images.githubusercontent.com/87887586/207001135-21559b7c-3742-4502-a2fd-b2eadd863c39.gif"/>
+
                       
                       
 
