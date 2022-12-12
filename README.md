@@ -26,7 +26,7 @@
 
 - 게시글 삭제
 
-<img width="500" src="https://user-images.githubusercontent.com/87887586/206999854-4dc107a7-ef1b-49d5-bd80-e367584bb36d.gif/>
+<img width="500" src="https://user-images.githubusercontent.com/87887586/206999854-4dc107a7-ef1b-49d5-bd80-e367584bb36d.gif"/>
                       
                       
 
