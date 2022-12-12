@@ -1,12 +1,28 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
-import styled from 'styled-components'
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow'; 
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
 function ContentForm() {
 
     const location = useLocation();
     const keyword = getBoardIdx(location);
+    const navigate = useNavigate();
+
 
     const [board, setBoard] = useState({
         board_idx : '',
@@ -26,6 +42,10 @@ function ContentForm() {
     }]);
 
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+       setBoard(values => ({ ...values, [name]: value }));
+    }
 
     //게시글 상세조회 
     useEffect(() => {
@@ -49,9 +69,9 @@ function ContentForm() {
             board_cn : board.board_cn
         }).then((resp) => {
            console.log(resp);
-           //alert('글수정 성공');
         })
     }
+
 
    // 게시글 댓글 달기.
     const submitList = () => {
@@ -66,105 +86,167 @@ function ContentForm() {
     }
 
     return (
-        <Layout>  
-    <div className='contentForm'>   
-        <div className="board_view">
-                <div className="info">
-                <form onSubmit={handleSubmit} method='post' action='/updateAction'>
-                    <dl>
-                    <dt>번호</dt>
-                    <dd><input type='text' name='board_idx' value={board.board_idx} readOnly /></dd>
-                    </dl>
-                    <dl>
-                    <dt>이름</dt>
-                    <dd><input type='text' name='board_name' value={board.board_name} onChange={e => setBoard({ ...board, board_name: e.target.value })}/></dd>
-                    </dl>
-                    <dl>
-                    <dt>제목</dt>
-                         <dd><input type='text' name='board_ttl' value={board.board_ttl} onChange={e => setBoard({ ...board, board_ttl: e.target.value })}/></dd>
-                    </dl>
-                    <dl>
-                        <dt>내용</dt>
-                        <dd><textarea rows={10} cols={50} name='board_cn' value={board.board_cn} onChange={e => setBoard({ ...board, board_cn: e.target.value })} >
-                         </textarea></dd>
-                     </dl>   
-                     <button type="submit" onClick={()=>{
-            //alert("수정 완료");    
-            window.location.href ="/";
-        }}>수정</button>
+       
+        <Container component="main" maxWidth="md">
+        <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+
+    <form method='post' action='/updateAction'>
+                <Grid container >
+                <Grid item xs={12}>
+                     <TextField
+                        margin="normal"
+                        readonly
+                        fullWidth
+                        id="outlined-multiline-flexible"
+                        name="board_idx"
+                        label="번호"
+                        autoComplete="shipping address-line1"
+                        variant="standard"
+                        value={board.board_idx}
+                    />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="outlined-multiline-flexible"
+                        name="board_name"
+                        label="이름"
+                        autoComplete="shipping address-line1"
+                        variant="standard"
+                        value={board.board_name}
+                        onChange={handleChange}
+                    />
+                    </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                        id="board_ttl"
+                        name="board_ttl"
+                        label="제목"
+                        autoComplete="shipping address-line2"
+                        variant="standard"
+                        value={board.board_ttl}
+                        onChange={handleChange}
+                    />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <TextField
+                        margin="normal"
+                        fullWidth
+                        id="outlined-multiline-static"
+                        multiline
+                        rows={10}
+                        name='board_cn' 
+                        value={board.board_cn}
+                        onChange={handleChange}
+                        />
+                    </Grid>    
+                    <ButtonGroup
+                variant="contained"
+                    aria-label="Disabled elevation buttons"
+                                >
+                    <Button type="handleSubmit">수정하기</Button>
+                   <Button onClick={() => {window.location.href ="/";}}>목록보기 </Button>
+                    <Button onClick={() => {
+                     axios.get("deleteAction?board_idx=" + `${board.board_idx}`)
+                    window.location.href ="/";
+                     }}>
+                    삭제하기</Button>
+                    </ButtonGroup>
+                </Grid>
+                </form>
 
 
-        <Link to={"/" } className='list-link'>
-        <input type='button' value='목록보기'></input>
-        </Link>
 
-       <button onClick={() => {
-        axios.get("deleteAction?board_idx=" + `${board.board_idx}`)
-        alert('삭제 성공');
-        window.location.href ="/";
-       }}>
-        삭제하기</button>
-         </form>    
-        </div>
-        </div>
+    <Box
+        sx={{
+        marginTop: 8,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+       }}
+     >
+        <form method='post' action='/writeReplyAction'>    
+       <Grid container spacing={3}>
+       <Grid item xs={12} sm={7}>  
+        <TextField
+          required
+          fullWidth
+          id="outlined-required"
+          label="댓글"
+          name="reply_cn"   
+        />
+    </Grid>
 
+     <Grid item xs={12} sm={3}>
+     <TextField
+          required
+          fullWidth
+          id="outlined-required"
+          label="별명"
+          name="reply_name" 
+        />    
+    </Grid> 
+    <Grid item xs={12} sm={2}>
+    <Button variant="outlined" type='submit'>댓글작성</Button>
+    </Grid>     
+     <input type="hidden" name="reply_board_idx" value={board.board_idx}/>  
+    </Grid>        
+    </form>
 
-        <div className='replyForm'>
-            <form onSubmit={submitList} method='post' action='/writeReplyAction'>
-                <div>
-                    <tr>
-                        <td colSpan={2}>
-                            <label>댓글</label><textarea row="2" cols="50" name="reply_cn"></textarea>
-                            <label>별명</label><input type="text" name="reply_name" />
-                            <input type="hidden" name="reply_board_idx" value={board.board_idx}/>
-                            <button type='submit'>
-                            댓글달기
-                             </button>
-                        </td>
-                    </tr>
-                </div>
-            </form>
-            </div>
+    
+     </Box>
 
-
-            <table>    
-                <thead>      
-                     <tr>   
-                        <th>별명</th>
-                        <th>내용</th>
-                        <th>날짜</th>
-                        <th>삭제</th>
-                    </tr>  
-                    </thead>   
-                    <tbody>
-                     {replyList && replyList.map((replyLists)=> {
-                            return (
-                                <tr key={replyLists.reply_board_idx}>
-                                <td>{replyLists.reply_name}</td>
-                                <td>{replyLists.reply_cn}</td>
-                                <td>{replyLists.reply_date.split("T")[0]}</td>
-                                <td>
-                                <button onClick={() => {
+       
+    <TableContainer align="center"  marginTop={8} >
+      <Table sx={{ maxWidth: 1350 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>별명</TableCell>
+            <TableCell>내용</TableCell>
+            <TableCell>날짜</TableCell>
+            <TableCell >삭제</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            {/* replyList.map을 사용해서 반복문 구현 */}
+            {replyList && replyList.map((replyLists)=> {
+                    return (
+                        <TableRow key={replyLists.reply_board_idx} >
+                            <TableCell>{replyLists.reply_name}</TableCell>
+                            <TableCell>{replyLists.reply_cn}</TableCell>
+                            <TableCell>{replyLists.reply_date.split("T")[0]}</TableCell>
+                            <TableCell>
+                            <Button variant="outlined" 
+                            onClick={() => {
                                     axios.get("deleteReplyAction?reply_idx=" + `${replyLists.reply_idx}`+"&board_idx="+`${board.board_idx}`)
-                                    alert('삭제 성공');
+                                    alert('댓글이 삭제되었습니다.');
                                     window.location.href ="/";
                                 }}>
-                                    삭제하기</button>
-                                </td>
-                                </tr>
-                                
-                            )
-                        })}
-                  </tbody>
-                
-            </table>
+                                    삭제</Button>
+                            </TableCell>
+                        </TableRow>
+                    )
+                })}
+        </TableBody>
+      </Table>
+    </TableContainer>        
 
-
-
-
-    </div>
+    </Box>
+</Container>
     
-</Layout>
+
     
     );
 
@@ -172,19 +254,9 @@ function ContentForm() {
 
 function getBoardIdx(location){ 
     const params = new URLSearchParams(location.search);
-
-    //console.log("location.search :", location.search);
     const keyword = params.get("board_idx"); 
-    //console.log("params.get(keyword)", keyword);
 
     return keyword
 }
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
 
-`;
 export default ContentForm;

@@ -52,13 +52,13 @@ const Button = styled.button`
   }
 
   &[disabled] {
-    background: lightgrey;
+    background: white;
     cursor: revert;
     transform: revert;
   }
 
   &[aria-current] {
-    background: pink;
+    background: lightblue;
     font-weight: bold;
     cursor: revert;
     transform: revert;
